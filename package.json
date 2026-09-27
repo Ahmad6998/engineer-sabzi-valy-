@@ -1,0 +1,20 @@
+{
+  "name": "engineer-sabzi-valy",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Engineer Sabzi Valy (انجینئر سبزی والے) — Fresh Mandi Produce Direct to Customer with Transparent Digital Weighing and Morning Mandi Pricing Engine",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "sabzi",
+    "fresh-produce",
+    "ecommerce",
+    "engineer-sabzi-valy",
+    "fresh-basket"
+  ],
+  "author": "Muhammad Ahmad",
+  "license": "MIT"
+}

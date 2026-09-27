@@ -1,0 +1,605 @@
+[
+  {
+    "id": "prod-1790535373588",
+    "name": "Coriander",
+    "urduName": "دھنیا",
+    "category": "vegetables",
+    "basePrice": 500,
+    "unit": "kg",
+    "mandiCost": 500,
+    "image": "/public/assets/products/coriander-1790535373588.jpg",
+    "badge": "Farm Fresh Today",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-1790535231473",
+    "name": "red capsicum",
+    "urduName": "سرخ شملہ مرچ",
+    "category": "vegetables",
+    "basePrice": 850,
+    "unit": "kg",
+    "mandiCost": 850,
+    "image": "/public/assets/products/red-capsicum-1790535231473.jpg",
+    "badge": "Farm Fresh Today",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-1790535131884",
+    "name": "Red Cabeg",
+    "urduName": "سرخ بند گوبھی",
+    "category": "vegetables",
+    "basePrice": 280,
+    "unit": "kg",
+    "mandiCost": 280,
+    "image": "/public/assets/products/red-cabeg-1790535131884.jpg",
+    "badge": "Farm Fresh Today",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-1790535037797",
+    "name": "Pumpkin",
+    "urduName": "کدو",
+    "category": "vegetables",
+    "basePrice": 200,
+    "unit": "kg",
+    "mandiCost": 200,
+    "image": "/public/assets/products/pumpkin-1790535037796.jpg",
+    "badge": "Farm Fresh Today",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-1790534890348",
+    "name": "Peas",
+    "urduName": "مٹر",
+    "category": "vegetables",
+    "basePrice": 560,
+    "unit": "kg",
+    "mandiCost": 560,
+    "image": "/public/assets/products/peas-1790534890347.jpg",
+    "badge": "Farm Fresh Today",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 40,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-1790534777418",
+    "name": "Orange",
+    "urduName": "کینو",
+    "category": "fruits",
+    "basePrice": 360,
+    "unit": "dozen",
+    "mandiCost": 300,
+    "image": "/public/assets/products/orange-1790534777417.jpg",
+    "badge": "Handpicked",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "1 Dozen",
+        "factor": 1
+      },
+      {
+        "label": "2 Dozens",
+        "factor": 1.9
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-1790530700484",
+    "name": "Lemon (Desi Nimbu)",
+    "urduName": "لیموں",
+    "category": "vegetables",
+    "basePrice": 150,
+    "unit": "kg",
+    "mandiCost": 120,
+    "image": "/public/assets/products/lemon--desi-nimbu--1790532674337.jpg",
+    "badge": "100% Juicy Mandi Sourced",
+    "description": "Fresh desi juicy lemons sourced fresh from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 85,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-1",
+    "name": "Aloo (Potato)",
+    "urduName": "آلو",
+    "category": "vegetables",
+    "basePrice": 90,
+    "unit": "kg",
+    "mandiCost": 68,
+    "image": "/public/assets/products/aloo--potato--1790532727467.jpg",
+    "badge": "Daily Staple",
+    "description": "Farm-fresh Punjab new crop potatoes, firm and ideal for curries, fries, and boiling.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 180,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-2",
+    "name": "Pyaz (Red Onion)",
+    "urduName": "پیاز سرخ",
+    "category": "vegetables",
+    "basePrice": 120,
+    "unit": "kg",
+    "mandiCost": 92,
+    "image": "/public/assets/products/pyaz--red-onion--1790532742274.jpg",
+    "badge": "Mandi Fresh",
+    "description": "Premium red Sindh onions, tightly packed layers, sweet and pungent flavor.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 210,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-3",
+    "name": "Tamatar (Fresh Tomato)",
+    "urduName": "ٹماٹر",
+    "category": "vegetables",
+    "basePrice": 140,
+    "unit": "kg",
+    "mandiCost": 105,
+    "image": "/public/assets/products/tamatar--fresh-tomato--1790532765670.jpg",
+    "badge": "Handpicked",
+    "description": "Vine-ripened firm red tomatoes, succulent and rich in juice and flavor.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 130,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-4",
+    "name": "Adrak (Ginger)",
+    "urduName": "ادرک",
+    "category": "herbs",
+    "basePrice": 580,
+    "unit": "kg",
+    "mandiCost": 460,
+    "image": "/public/assets/products/adrak--ginger--1790532798624.jpg",
+    "badge": "Premium Import",
+    "description": "Clean, fibrous, and aromatic ginger roots, thoroughly washed.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 45,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-5",
+    "name": "Lehsan (Desi Garlic)",
+    "urduName": "لہسن دیسی",
+    "category": "herbs",
+    "basePrice": 420,
+    "unit": "kg",
+    "mandiCost": 330,
+    "image": "/public/assets/products/lehsan--desi-garlic--1790532829213.jpg",
+    "badge": "Desi Organic",
+    "description": "Strong pungent desi garlic cloves, ideal for authentic culinary paste and tadka.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 55,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-6",
+    "name": "Hari Mirch (Green Chilies)",
+    "urduName": "ہری مرچ",
+    "category": "herbs",
+    "basePrice": 180,
+    "unit": "kg",
+    "mandiCost": 135,
+    "image": "/public/assets/products/hari-mirch--green-chilies-1790532849239.jpg",
+    "badge": "Hot & Crisp",
+    "description": "Fresh spicy green chilies hand-sorted for quality and vibrant green color.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 35,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-7",
+    "name": "Palak (Fresh Spinach)",
+    "urduName": "پالک",
+    "category": "vegetables",
+    "basePrice": 60,
+    "unit": "bundle",
+    "mandiCost": 40,
+    "image": "/public/assets/products/palak--fresh-spinach--1790533473617.jpg",
+    "badge": "Fresh Pick",
+    "description": "Crisp green tender spinach leaves, washed roots and tied in neat bundles.",
+    "weights": [
+      {
+        "label": "1 Bundle",
+        "factor": 1
+      },
+      {
+        "label": "2 Bundles",
+        "factor": 2
+      },
+      {
+        "label": "3 Bundles",
+        "factor": 2.8
+      }
+    ],
+    "stockKg": 60,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-8",
+    "name": "Bhindi (Lady Finger / Okra)",
+    "urduName": "بھنڈی",
+    "category": "vegetables",
+    "basePrice": 160,
+    "unit": "kg",
+    "mandiCost": 120,
+    "image": "/public/assets/products/bhindi--lady-finger---okr-1790533440307.jpg",
+    "badge": "Tender Green",
+    "description": "Small, tender non-fibrous lady fingers, perfect for crispy bhindi fry.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 75,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-9",
+    "name": "Kheera (Desi Cucumber)",
+    "urduName": "کھیرا دیسی",
+    "category": "vegetables",
+    "basePrice": 100,
+    "unit": "kg",
+    "mandiCost": 72,
+    "image": "/public/assets/products/kheera--desi-cucumber--1790533122475.jpg",
+    "badge": "Salad Special",
+    "description": "Crispy and juicy farm cucumbers, refreshing addition to daily salads.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-10",
+    "name": "Gajar (Red Carrots)",
+    "urduName": "گاجر سرخ",
+    "category": "vegetables",
+    "basePrice": 110,
+    "unit": "kg",
+    "mandiCost": 80,
+    "image": "/public/assets/products/gajar--red-carrots--1790533102730.jpg",
+    "badge": "Sweet Crop",
+    "description": "Crunchy sweet carrots ideal for salads, fresh juice, and halwa.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 90,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-11",
+    "name": "Kela (Sindh Sweet Bananas)",
+    "urduName": "کیلا سندھ",
+    "category": "fruits",
+    "basePrice": 180,
+    "unit": "dozen",
+    "mandiCost": 130,
+    "image": "https://images.unsplash.com/photo-1571771894821-ce9b6c11b08e?w=500&auto=format&fit=crop&q=80",
+    "badge": "Daily Energy",
+    "description": "Naturally ripened sweet bananas from Sindh orchards, rich in potassium.",
+    "weights": [
+      {
+        "label": "1 Dozen",
+        "factor": 1
+      },
+      {
+        "label": "2 Dozens",
+        "factor": 1.9
+      }
+    ],
+    "stockKg": 120,
+    "grade": "Grade A",
+    "status": "active"
+  },
+  {
+    "id": "prod-12",
+    "name": "Seb (Swat Crunchy Apples)",
+    "urduName": "سیب سوات",
+    "category": "fruits",
+    "basePrice": 290,
+    "unit": "kg",
+    "mandiCost": 220,
+    "image": "https://images.unsplash.com/photo-1560806887-1e4cd0b6cbd6?w=500&auto=format&fit=crop&q=80",
+    "badge": "Valley Fresh",
+    "description": "Crisp red apples from Swat Valley, juicy, sweet, and aromatic.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      }
+    ],
+    "stockKg": 85,
+    "grade": "Grade A",
+    "status": "active"
+  }
+]
