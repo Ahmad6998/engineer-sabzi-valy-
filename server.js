@@ -187,6 +187,21 @@ const server = http.createServer(async (req, res) => {
 
       // If user uploaded image from laptop as Base64 data:
       if (data.imageBase64) {
+        const matches = data.imageBase64.match(/^data:image\/([a-zA-Z0-9+]+);base64,(.+)$/);
+        if (matches) {
+          const rawExt = matches[1].toLowerCase();
+          const ext = rawExt.includes('png') ? 'png' : rawExt.includes('webp') ? 'webp' : 'jpg';
+          const buffer = Buffer.from(matches[2], 'base64');
+          const cleanName = (data.name || 'produce').toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 25);
+          const filename = `${cleanName}-${Date.now()}.${ext}`;
+          const targetDir = path.join(__dirname, 'public', 'assets', 'products');
+          if (!fs.existsSync(targetDir)) {
+            fs.mkdirSync(targetDir, { recursive: true });
+          }
+          const targetPath = path.join(targetDir, filename);
+          fs.writeFileSync(targetPath, buffer);
+          imageUrl = `/public/assets/products/${filename}`;
+        }
         imageUrl = saveUploadedImageSafely(data.imageBase64, data.name) || imageUrl;
       }
 
@@ -235,6 +250,7 @@ const server = http.createServer(async (req, res) => {
       };
 
       products.unshift(newProduct);
+      fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2));
       safeWriteFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2));
       return sendJson(res, 201, { success: true, message: "Product added successfully!", product: newProduct, products });
     } catch (err) {
@@ -246,6 +262,7 @@ const server = http.createServer(async (req, res) => {
     try {
       const { id } = await parseBody(req);
       products = products.filter(p => p.id !== id);
+      fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2));
       safeWriteFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2));
       return sendJson(res, 200, { success: true, message: "Product deleted", products });
     } catch (err) {
@@ -299,11 +316,27 @@ const server = http.createServer(async (req, res) => {
 
       // If user uploaded a new image from laptop for this product:
       if (data.imageBase64) {
+        const matches = data.imageBase64.match(/^data:image\/([a-zA-Z0-9+]+);base64,(.+)$/);
+        if (matches) {
+          const rawExt = matches[1].toLowerCase();
+          const ext = rawExt.includes('png') ? 'png' : rawExt.includes('webp') ? 'webp' : 'jpg';
+          const buffer = Buffer.from(matches[2], 'base64');
+          const cleanName = (item.name || 'produce').toLowerCase().replace(/[^a-z0-9]/g, '-').slice(0, 25);
+          const filename = `${cleanName}-${Date.now()}.${ext}`;
+          const targetDir = path.join(__dirname, 'public', 'assets', 'products');
+          if (!fs.existsSync(targetDir)) {
+            fs.mkdirSync(targetDir, { recursive: true });
+          }
+          const targetPath = path.join(targetDir, filename);
+          fs.writeFileSync(targetPath, buffer);
+          item.image = `/public/assets/products/${filename}`;
+        }
         item.image = saveUploadedImageSafely(data.imageBase64, item.name) || item.image;
       } else if (data.image) {
         item.image = data.image;
       }
 
+      fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2));
       safeWriteFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2));
       return sendJson(res, 200, { success: true, message: "Product updated successfully!", product: item, products });
     } catch (err) {
@@ -327,6 +360,7 @@ const server = http.createServer(async (req, res) => {
           if (up.status !== undefined) item.status = up.status;
         }
       });
+      fs.writeFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2));
       safeWriteFileSync(PRODUCTS_FILE, JSON.stringify(products, null, 2));
       return sendJson(res, 200, { success: true, message: "All table updates synced to store!", products });
     } catch (err) {

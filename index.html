@@ -3426,6 +3426,7 @@
           body: JSON.stringify(payload)
         });
         const data = await res.json();
+        if (data.success) {
         if (data && data.success) {
           alert(`✅ Product "${name}" updated successfully with your photo and changes!`);
           products = data.products;
@@ -3434,9 +3435,11 @@
           renderMandiTable();
           closeEditProductModal();
         } else {
+          alert('Update failed: ' + (data.error || 'Unknown error'));
           throw new Error(data ? data.error : 'Server update failed');
         }
       } catch (err) {
+        alert('Network error updating product: ' + err.message);
         // Fallback local update for read-only environments
         const item = products.find(p => p.id === id);
         if (item) {
@@ -3763,6 +3766,17 @@
       };
 
       try {
+        const res = await fetch('/api/products/add', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          alert(`🎉 Mubarak! "${name}" has been published to the storefront with your laptop picture!`);
+          products = data.products;
+          renderCatalog();
+          renderMandiTable();
         let isPublished = false;
         try {
           const res = await fetch('/api/products/add', {
@@ -3779,6 +3793,10 @@
           console.warn('API add failed, saving locally:', apiErr);
         }
 
+          // Reset form
+          document.getElementById('addNewProductForm').reset();
+          clearSelectedImage();
+          updatePreviewCard();
         if (!isPublished) {
           // Robust client fallback for serverless read-only mode (Vercel) & offline mode
           const localProduct = {
@@ -3807,8 +3825,41 @@
           products.unshift(localProduct);
         }
 
+          // Switch to store view and scroll to catalog
+          switchView('store');
+          scrollToCatalog();
+        } else {
+          alert('Failed to add product: ' + (data.error || 'Unknown error'));
+        }
+      } catch (err) {
+        // Fallback for offline mode
+        const localProduct = {
+          id: `prod-${Date.now()}`,
+          name,
+          urduName,
+          category,
+          unit,
+          basePrice,
+          mandiCost,
+          stockKg,
+          grade,
+          badge,
+          description,
+          image: uploadedBase64Image || "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&auto=format&fit=crop&q=80",
+          weights: unit === 'kg' ? [
+            { label: "500g", factor: 0.5 },
+            { label: "1 kg", factor: 1.0 },
+            { label: "2 kg", factor: 2.0 },
+            { label: "5 kg", factor: 4.8 }
+          ] : [
+            { label: `1 ${unit}`, factor: 1.0 },
+            { label: `2 ${unit}s`, factor: 1.9 }
+          ]
+        };
+        products.unshift(localProduct);
         saveCustomProductsLocally();
         renderCatalog();
+        alert(`🎉 "${name}" added to storefront with your picture!`);
         renderMandiTable();
 
         // Reset form
