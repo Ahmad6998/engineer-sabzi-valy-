@@ -458,7 +458,7 @@
       </div>
 
       <!-- ==================== PRODUCT CARDS GRID ==================== -->
-      <section id="catalogGrid" class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+      <section id="catalogGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-4.5">
         <!-- Injected dynamically via JavaScript -->
       </section>
 
@@ -2233,38 +2233,36 @@
         const unitPrice = Math.round(prod.basePrice * selectedWeight.factor);
 
         const card = document.createElement('div');
-        card.className = "bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between group";
+        card.className = "bg-white rounded-xl sm:rounded-2xl border border-gray-200 overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col justify-between group";
         
         card.innerHTML = `
           <div>
             <!-- Product Image & Badges with Hover Zoom -->
-            <div class="relative bg-gray-50 aspect-square overflow-hidden cursor-pointer">
-              <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-cover group-hover:scale-110 transition duration-500 ease-out">
-              <span class="absolute top-2 left-2 bg-brand-dark/90 backdrop-blur-md text-white text-[10px] font-black px-2.5 py-0.5 rounded-full shadow-md">
+            <div class="relative bg-gray-50 h-32 sm:h-36 md:h-40 overflow-hidden cursor-pointer flex items-center justify-center p-2">
+              <img src="${prod.image}" alt="${prod.name}" class="w-full h-full object-contain group-hover:scale-105 transition duration-300 ease-out">
+              <span class="absolute top-1.5 left-1.5 bg-brand-dark/90 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-full shadow-xs">
                 ${prod.badge || 'Fresh'}
               </span>
-              <span class="absolute top-2 right-2 bg-white/95 backdrop-blur-md text-brand-green text-[10px] font-black px-2.5 py-0.5 rounded-full border border-green-200 shadow-sm">
+              <span class="absolute top-1.5 right-1.5 bg-white/95 backdrop-blur-md text-brand-green text-[9px] sm:text-[10px] font-black px-2 py-0.5 rounded-full border border-green-200 shadow-xs">
                 ${prod.grade || 'Grade A'}
               </span>
             </div>
 
             <!-- Product Details -->
-            <div class="p-3.5 space-y-2">
-              <div class="flex items-start justify-between gap-1">
-                <div>
-                  <h3 class="font-extrabold text-sm sm:text-base text-brand-dark leading-tight group-hover:text-brand-green transition">${prod.name}</h3>
-                  <span class="urdu-text text-xs text-brand-green font-bold block mt-0.5">${prod.urduName || ''}</span>
-                </div>
+            <div class="p-2.5 sm:p-3 space-y-1.5">
+              <div class="flex items-baseline justify-between gap-1">
+                <h3 class="font-extrabold text-xs sm:text-sm text-brand-dark leading-tight group-hover:text-brand-green transition truncate" title="${prod.name}">${prod.name}</h3>
+                <span class="urdu-text text-[11px] sm:text-xs text-brand-green font-bold flex-shrink-0 leading-tight">${prod.urduName || ''}</span>
               </div>
 
               <!-- Weight / Portion Chips -->
               <div>
-                <span class="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Select Portion:</span>
-                <div class="flex flex-wrap gap-1.5">
+                <span class="text-[9px] font-bold text-gray-400 uppercase tracking-wider block mb-0.5">Select Portion:</span>
+                <div class="flex flex-wrap gap-1">
                   ${prod.weights.map(w => `
                     <button 
                       onclick="selectProductWeight('${prod.id}', '${w.label}')"
-                      class="text-[11px] px-2.5 py-0.5 rounded-lg font-bold transition ${selectedWeight.label === w.label ? 'bg-brand-dark text-white shadow-sm' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}"
+                      class="text-[10px] px-2 py-0.5 rounded-md font-extrabold transition ${selectedWeight.label === w.label ? 'bg-brand-dark text-white shadow-xs' : 'bg-gray-100 text-gray-600 hover:bg-gray-200'}"
                     >
                       ${w.label}
                     </button>
@@ -2273,35 +2271,35 @@
               </div>
 
               <!-- Price Display -->
-              <div class="pt-1 flex items-baseline justify-between">
-                <div>
-                  <span class="text-lg sm:text-xl font-black text-brand-dark">Rs. ${unitPrice}</span>
+              <div class="pt-0.5 flex items-baseline justify-between">
+                <div class="leading-none">
+                  <span class="text-base sm:text-lg font-black text-brand-dark">Rs. ${unitPrice}</span>
                   <span class="text-[10px] text-gray-400 font-bold"> / ${selectedWeight.label}</span>
                 </div>
-                <span class="text-xs text-gray-400 line-through">Rs. ${Math.round(unitPrice * 1.18)}</span>
+                <span class="text-[11px] text-gray-400 line-through">Rs. ${Math.round(unitPrice * 1.18)}</span>
               </div>
             </div>
           </div>
 
           <!-- Add to Cart or Stepper -->
-          <div class="p-3.5 pt-0">
+          <div class="p-2.5 pt-0 sm:p-3 sm:pt-0">
             ${prod.status === 'out-of-stock' ? `
-              <button disabled class="w-full bg-gray-100 text-gray-400 font-bold text-xs py-2 px-3 rounded-xl flex items-center justify-center gap-1.5 cursor-not-allowed">
+              <button disabled class="w-full bg-gray-100 text-gray-400 font-bold text-[11px] py-1.5 px-2.5 rounded-xl flex items-center justify-center gap-1.5 cursor-not-allowed">
                 <i data-lucide="slash" class="w-3.5 h-3.5"></i> Out of Stock (دستیاب نہیں)
               </button>
             ` : (cartItem ? `
-              <div class="flex items-center justify-between bg-brand-green text-white rounded-xl font-bold py-1.5 px-3 shadow-md shadow-green-100">
-                <button onclick="updateCartItemQty('${prod.id}', -1)" class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white/20 active:scale-95 text-base font-black">-</button>
-                <span class="text-xs sm:text-sm font-black">${cartItem.qty} in Basket</span>
-                <button onclick="updateCartItemQty('${prod.id}', 1)" class="w-7 h-7 flex items-center justify-center rounded-lg hover:bg-white/20 active:scale-95 text-base font-black">+</button>
+              <div class="flex items-center justify-between bg-brand-green text-white rounded-xl font-bold py-1 px-2.5 shadow-sm">
+                <button onclick="updateCartItemQty('${prod.id}', -1)" class="w-6 h-6 flex items-center justify-center rounded-lg hover:bg-white/20 active:scale-95 text-base font-black">-</button>
+                <span class="text-xs font-black">${cartItem.qty} in Basket</span>
+                <button onclick="updateCartItemQty('${prod.id}', 1)" class="w-6 h-6 flex items-center justify-center rounded-lg hover:bg-white/20 active:scale-95 text-base font-black">+</button>
               </div>
             ` : `
               <button 
                 id="btn_add_${prod.id}"
                 onclick="animateAddToCart(event, '${prod.id}')" 
-                class="w-full bg-brand-lightGreen hover:bg-brand-green text-brand-green hover:text-white border border-brand-green/40 font-extrabold text-xs sm:text-sm py-2 px-3 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 shadow-sm"
+                class="w-full bg-brand-lightGreen hover:bg-brand-green text-brand-green hover:text-white border border-brand-green/40 font-extrabold text-xs py-1.5 sm:py-2 px-2.5 rounded-xl transition-all duration-200 flex items-center justify-center gap-1.5 active:scale-95 shadow-xs"
               >
-                <i data-lucide="plus" class="w-4 h-4"></i> Add to Basket
+                <i data-lucide="plus" class="w-3.5 h-3.5"></i> Add to Basket
               </button>
             `)}
           </div>
