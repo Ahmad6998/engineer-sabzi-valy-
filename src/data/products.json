@@ -522,27 +522,23 @@
     "urduName": "پالک",
     "category": "vegetables",
     "basePrice": 60,
-    "unit": "kg",
+    "unit": "bundle",
     "mandiCost": 40,
     "image": "/public/assets/products/palak--fresh-spinach--1790533473617.jpg",
     "badge": "Fresh Pick",
     "description": "Crisp green tender spinach leaves, washed roots and tied in neat bundles.",
     "weights": [
       {
-        "label": "500g",
-        "factor": 0.5
-      },
-      {
-        "label": "1 kg",
+        "label": "1 Bundle",
         "factor": 1
       },
       {
-        "label": "2 kg",
+        "label": "2 Bundles",
         "factor": 2
       },
       {
-        "label": "5 kg",
-        "factor": 4.8
+        "label": "3 Bundles",
+        "factor": 2.8
       }
     ],
     "stockKg": 60,
