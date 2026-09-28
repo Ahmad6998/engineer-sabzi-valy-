@@ -1,5 +1,69 @@
 [
   {
+    "id": "prod-1790572724376",
+    "name": "Mango",
+    "urduName": "آم",
+    "category": "fruits",
+    "basePrice": 480,
+    "unit": "kg",
+    "mandiCost": 480,
+    "image": "/public/assets/products/mango-1790572724376.jpg",
+    "badge": "Farm Fresh Today",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A"
+  },
+  {
+    "id": "prod-1790572629197",
+    "name": "Iceburg",
+    "urduName": "آئس برگ",
+    "category": "vegetables",
+    "basePrice": 350,
+    "unit": "kg",
+    "mandiCost": 350,
+    "image": "/public/assets/products/iceburg-1790572629197.jpg",
+    "badge": "Farm Fresh Today",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A"
+  },
+  {
     "id": "prod-1790535373588",
     "name": "Coriander",
     "urduName": "دھنیا",
