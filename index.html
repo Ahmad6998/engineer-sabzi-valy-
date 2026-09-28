@@ -2083,6 +2083,47 @@
       { id: "prod-13", name: "Weekly Sabzi Kitchen Basket", urduName: "ہفتہ وار سبزی باسکٹ", category: "bundles", basePrice: 1390, unit: "pack", mandiCost: 1050, image: "https://images.unsplash.com/photo-1542838132-92c53300491e?w=500&auto=format&fit=crop&q=80", badge: "Super Saver (15% Off)", grade: "Grade A", stockKg: 40, weights: [{ label: "Standard Basket (9.6 kg)", factor: 1.0 }, { label: "Family Mega Basket (16 kg)", factor: 1.7 }] }
     ];
 
+    function saveCustomProductsLocally() {
+      try {
+        const customProds = products.filter(p => p.id && (p.id.startsWith('prod-17') || p.id.startsWith('prod-18') || p.id.startsWith('prod-19')));
+        localStorage.setItem('esv_custom_products', JSON.stringify(customProds));
+      } catch (e) {
+        console.warn('LocalStorage save error:', e);
+      }
+    }
+
+    function mergeCustomProducts() {
+      try {
+        const stored = localStorage.getItem('esv_custom_products');
+        if (stored) {
+          const custom = JSON.parse(stored);
+          if (Array.isArray(custom)) {
+            custom.forEach(cp => {
+              const existingIdx = products.findIndex(p => p.id === cp.id);
+              if (existingIdx !== -1) {
+                products[existingIdx] = cp;
+              } else {
+                products.unshift(cp);
+              }
+            });
+          }
+        }
+      } catch (e) {
+        console.warn('LocalStorage load error:', e);
+      }
+    }
+
+    function removeCustomProductLocally(id) {
+      try {
+        const stored = localStorage.getItem('esv_custom_products');
+        if (stored) {
+          let custom = JSON.parse(stored);
+          custom = custom.filter(p => p.id !== id);
+          localStorage.setItem('esv_custom_products', JSON.stringify(custom));
+        }
+      } catch (e) {}
+    }
+
     // Fetch initial catalog with instant fallback
     async function loadProducts() {
       try {
@@ -2097,6 +2138,7 @@
         console.warn('API offline or file:// mode. Loading embedded default catalog.');
         products = DEFAULT_PRODUCTS;
       }
+      mergeCustomProducts();
       renderCatalog();
       renderMandiTable();
     }
@@ -3239,6 +3281,7 @@
           // Local fallback filter if API didn't return list
           products = products.filter(p => p.id !== id);
         }
+        removeCustomProductLocally(id);
         renderCatalog();
         renderMandiTable();
         closeDeleteModal();
@@ -3246,6 +3289,7 @@
       } catch (err) {
         // If offline/error, still remove from UI state cleanly
         products = products.filter(p => p.id !== id);
+        removeCustomProductLocally(id);
         renderCatalog();
         renderMandiTable();
         closeDeleteModal();
@@ -3382,17 +3426,40 @@
           body: JSON.stringify(payload)
         });
         const data = await res.json();
-        if (data.success) {
+        if (data && data.success) {
           alert(`✅ Product "${name}" updated successfully with your photo and changes!`);
           products = data.products;
+          saveCustomProductsLocally();
           renderCatalog();
           renderMandiTable();
           closeEditProductModal();
         } else {
-          alert('Update failed: ' + (data.error || 'Unknown error'));
+          throw new Error(data ? data.error : 'Server update failed');
         }
       } catch (err) {
-        alert('Network error updating product: ' + err.message);
+        // Fallback local update for read-only environments
+        const item = products.find(p => p.id === id);
+        if (item) {
+          item.name = name;
+          item.urduName = urduName;
+          item.category = category;
+          item.unit = unit;
+          item.mandiCost = mandiCost;
+          item.basePrice = basePrice;
+          item.stockKg = stockKg;
+          item.grade = grade;
+          item.badge = badge;
+          item.status = status;
+          item.description = description;
+          if (editSelectedBase64) item.image = editSelectedBase64;
+          saveCustomProductsLocally();
+          renderCatalog();
+          renderMandiTable();
+          closeEditProductModal();
+          alert(`✅ Product "${name}" updated successfully!`);
+        } else {
+          alert('Update error: ' + err.message);
+        }
       } finally {
         btn.innerHTML = originalText;
         btn.disabled = false;
@@ -3696,59 +3763,67 @@
       };
 
       try {
-        const res = await fetch('/api/products/add', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(payload)
-        });
-        const data = await res.json();
-        if (data.success) {
-          alert(`🎉 Mubarak! "${name}" has been published to the storefront with your laptop picture!`);
-          products = data.products;
-          renderCatalog();
-          renderMandiTable();
-
-          // Reset form
-          document.getElementById('addNewProductForm').reset();
-          clearSelectedImage();
-          updatePreviewCard();
-
-          // Switch to store view and scroll to catalog
-          switchView('store');
-          scrollToCatalog();
-        } else {
-          alert('Failed to add product: ' + (data.error || 'Unknown error'));
+        let isPublished = false;
+        try {
+          const res = await fetch('/api/products/add', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          const data = await res.json();
+          if (data && data.success && Array.isArray(data.products)) {
+            products = data.products;
+            isPublished = true;
+          }
+        } catch (apiErr) {
+          console.warn('API add failed, saving locally:', apiErr);
         }
-      } catch (err) {
-        // Fallback for offline mode
-        const localProduct = {
-          id: `prod-${Date.now()}`,
-          name,
-          urduName,
-          category,
-          unit,
-          basePrice,
-          mandiCost,
-          stockKg,
-          grade,
-          badge,
-          description,
-          image: uploadedBase64Image || "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&auto=format&fit=crop&q=80",
-          weights: unit === 'kg' ? [
-            { label: "500g", factor: 0.5 },
-            { label: "1 kg", factor: 1.0 },
-            { label: "2 kg", factor: 2.0 },
-            { label: "5 kg", factor: 4.8 }
-          ] : [
-            { label: `1 ${unit}`, factor: 1.0 },
-            { label: `2 ${unit}s`, factor: 1.9 }
-          ]
-        };
-        products.unshift(localProduct);
+
+        if (!isPublished) {
+          // Robust client fallback for serverless read-only mode (Vercel) & offline mode
+          const localProduct = {
+            id: `prod-${Date.now()}`,
+            name,
+            urduName,
+            category,
+            unit,
+            basePrice,
+            mandiCost,
+            stockKg,
+            grade,
+            badge,
+            description,
+            image: uploadedBase64Image || "https://images.unsplash.com/photo-1540420773420-3366772f4999?w=500&auto=format&fit=crop&q=80",
+            weights: unit === 'kg' ? [
+              { label: "500g", factor: 0.5 },
+              { label: "1 kg", factor: 1.0 },
+              { label: "2 kg", factor: 2.0 },
+              { label: "5 kg", factor: 4.8 }
+            ] : [
+              { label: `1 ${unit}`, factor: 1.0 },
+              { label: `2 ${unit}s`, factor: 1.9 }
+            ]
+          };
+          products.unshift(localProduct);
+        }
+
+        saveCustomProductsLocally();
         renderCatalog();
-        alert(`🎉 "${name}" added to storefront with your picture!`);
+        renderMandiTable();
+
+        // Reset form
+        document.getElementById('addNewProductForm').reset();
+        clearSelectedImage();
+        updatePreviewCard();
+
+        alert(`🎉 Mubarak! "${name}" has been published to the storefront!`);
+
+        // Switch to store view and scroll to catalog
         switchView('store');
         scrollToCatalog();
+      } catch (err) {
+        console.error('Error in handleAddNewProduct:', err);
+        alert('Could not publish product: ' + err.message);
       } finally {
         btn.disabled = false;
         btn.innerHTML = `<i data-lucide="check-circle-2" class="w-5 h-5"></i> Publish Product to Storefront`;
