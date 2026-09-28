@@ -1,5 +1,37 @@
 [
   {
+    "id": "prod-1790573033281",
+    "name": "Mashroom",
+    "urduName": "کھمبی",
+    "category": "vegetables",
+    "basePrice": 975,
+    "unit": "kg",
+    "mandiCost": 780,
+    "image": "/public/assets/products/mashroom-1790573033281.jpg",
+    "badge": "Farm Fresh Today",
+    "description": "Farm fresh directly sourced from morning mandi.",
+    "weights": [
+      {
+        "label": "500g",
+        "factor": 0.5
+      },
+      {
+        "label": "1 kg",
+        "factor": 1
+      },
+      {
+        "label": "2 kg",
+        "factor": 2
+      },
+      {
+        "label": "5 kg",
+        "factor": 4.8
+      }
+    ],
+    "stockKg": 80,
+    "grade": "Grade A"
+  },
+  {
     "id": "prod-1790572724376",
     "name": "Mango",
     "urduName": "آم",

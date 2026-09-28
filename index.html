@@ -86,19 +86,18 @@
     <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
       
       <!-- Brand Logo -->
-      <div class="flex items-center gap-3 cursor-pointer group" onclick="switchView('store')">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-dark via-brand-green to-emerald-500 flex items-center justify-center text-white shadow-md shadow-green-200 group-hover:scale-105 transition">
-          <i data-lucide="sprout" class="w-6 h-6"></i>
+      <div class="flex items-center gap-2.5 sm:gap-3 cursor-pointer group" onclick="switchView('store')">
+        <div class="w-10 h-10 sm:w-11 sm:h-11 rounded-2xl bg-gradient-to-tr from-brand-dark via-brand-green to-emerald-500 flex items-center justify-center text-white shadow-md shadow-green-200 group-hover:scale-105 transition flex-shrink-0">
+          <i data-lucide="sprout" class="w-5 h-5 sm:w-6 sm:h-6"></i>
         </div>
         <div>
           <div class="flex items-baseline gap-2">
-            <span class="font-black text-xl sm:text-2xl text-brand-dark tracking-tight">ENGINEER <span class="text-brand-green">SABZI VALY</span></span>
+            <span class="font-black text-lg sm:text-2xl text-brand-dark tracking-tight leading-tight">ENGINEER <span class="text-brand-green">SABZI VALY</span></span>
           </div>
-          <p class="text-[11px] text-gray-500 font-medium tracking-wide urdu-text leading-tight">انجینئر سبزی والے • لاہور کی تازہ سبزیاں و پھل</p>
+          <p class="text-[10px] sm:text-[11px] text-gray-500 font-medium tracking-wide urdu-text leading-tight truncate">انجینئر سبزی والے • لاہور کی تازہ سبزیاں و پھل</p>
         </div>
       </div>
 
-      <!-- Area / Sector Selector Dropdown (LAHORE ONLY) -->
       <!-- Area / Sector Selector Dropdown (LAHORE ONLY - Click to Open Location Modal) -->
       <div onclick="openLocationModal()" class="hidden lg:flex items-center gap-2 bg-gray-50 hover:bg-emerald-50 border border-gray-200 hover:border-emerald-300 px-3 py-1.5 rounded-xl text-sm transition cursor-pointer group" title="Click to change your Lahore delivery location">
         <div class="w-7 h-7 rounded-lg bg-green-100 text-brand-green flex items-center justify-center group-hover:scale-105 transition">
@@ -145,10 +144,10 @@
         <button 
           id="viewToggleBtn" 
           onclick="togglePortalView()" 
-          class="px-3 py-2 text-xs font-bold rounded-xl border border-brand-dark/20 text-brand-dark hover:bg-brand-dark hover:text-white transition flex items-center gap-1.5 shadow-sm active:scale-95 cursor-pointer"
+          class="px-2.5 py-2 sm:px-3 text-xs font-bold rounded-xl border border-brand-dark/20 text-brand-dark hover:bg-brand-dark hover:text-white transition flex items-center gap-1.5 shadow-sm active:scale-95 cursor-pointer flex-shrink-0"
         >
           <i data-lucide="sliders" class="w-3.5 h-3.5"></i>
-          <span id="viewToggleLabel">Admin & Mandi Ops</span>
+          <span id="viewToggleLabel"><span class="hidden sm:inline">Admin & Mandi Ops</span><span class="sm:hidden">Admin</span></span>
         </button>
 
         <!-- ACTIVE HEADER WHATSAPP DIRECT CHAT BUTTON -->
@@ -167,19 +166,33 @@
         <button 
           id="headerCartBtn"
           onclick="toggleCart(true)" 
-          class="relative bg-gradient-to-r from-brand-green to-emerald-600 hover:from-brand-hoverGreen hover:to-emerald-700 text-white px-4 py-2 rounded-xl flex items-center gap-2 font-black text-sm shadow-lg shadow-green-200 transition active:scale-95"
+          class="relative bg-gradient-to-r from-brand-green to-emerald-600 hover:from-brand-hoverGreen hover:to-emerald-700 text-white px-3 sm:px-4 py-2 rounded-xl flex items-center gap-1.5 sm:gap-2 font-black text-xs sm:text-sm shadow-lg shadow-green-200 transition active:scale-95 flex-shrink-0"
         >
-          <i data-lucide="shopping-basket" class="w-5 h-5"></i>
+          <i data-lucide="shopping-basket" class="w-4 h-4 sm:w-5 sm:h-5"></i>
           <span class="hidden sm:inline">Basket</span>
-          <span id="cartCountBadge" class="bg-brand-dark text-white text-[11px] font-extrabold px-2 py-0.5 rounded-full min-w-[22px] text-center shadow-sm">0</span>
+          <span id="cartCountBadge" class="bg-brand-dark text-white text-[11px] font-extrabold px-1.5 sm:px-2 py-0.5 rounded-full min-w-[20px] sm:min-w-[22px] text-center shadow-sm">0</span>
           <span id="cartTotalHeader" class="hidden md:inline pl-1 border-l border-green-300/40 text-xs font-mono font-bold">Rs. 0</span>
         </button>
       </div>
 
     </div>
 
-    <!-- Mobile Search Bar -->
-    <div class="px-4 pb-2.5 md:hidden">
+    <!-- Mobile Location Selector Bar & Mobile Search Bar -->
+    <div class="px-4 pb-2.5 md:hidden space-y-2">
+      <!-- Mobile Location Bar -->
+      <div onclick="openLocationModal()" class="flex items-center justify-between bg-emerald-50/90 border border-emerald-200/90 px-3 py-1.5 rounded-xl text-xs cursor-pointer active:scale-98 transition shadow-xs" title="Tap to select Lahore delivery area">
+        <div class="flex items-center gap-1.5 min-w-0">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-brand-green flex-shrink-0"></i>
+          <span class="text-[11px] text-gray-500 font-semibold flex-shrink-0">Delivering To:</span>
+          <span id="mobileUserAreaDisplay" class="font-extrabold text-brand-dark truncate text-xs">Gulberg (I - V), Lahore</span>
+        </div>
+        <div class="flex items-center gap-1 text-[11px] font-bold text-brand-green flex-shrink-0">
+          <span>Change</span>
+          <i data-lucide="chevron-right" class="w-3 h-3"></i>
+        </div>
+      </div>
+
+      <!-- Mobile Search Bar -->
       <div class="relative">
         <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2"></i>
         <input 
@@ -193,40 +206,40 @@
   </header>
 
   <!-- ==================== MAIN CONTENT AREA ==================== -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 py-6">
+  <main class="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-4 py-4 sm:py-6">
 
     <!-- ==================== 1. STOREFRONT VIEW ==================== -->
-    <div id="storefrontView" class="space-y-8">
+    <div id="storefrontView" class="space-y-6 sm:space-y-8">
       
       <!-- ==================== ANIMATED HERO BANNER CAROUSEL ==================== -->
-      <section class="relative rounded-3xl overflow-hidden shadow-xl min-h-[340px] sm:min-h-[400px] flex items-center bg-brand-dark">
+      <section class="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl min-h-[440px] sm:min-h-[460px] md:min-h-[480px] flex items-center bg-brand-dark">
         
         <!-- Slides Container -->
-        <div id="heroSlider" class="absolute inset-0 w-full h-full">
+        <div id="heroSlider" class="absolute inset-0 w-full h-full select-none cursor-grab active:cursor-grabbing">
           
           <!-- SLIDE 1: Farm Fresh Mandi Produce -->
           <div class="hero-slide active absolute inset-0 w-full h-full transition-opacity duration-700 ease-in-out opacity-100 z-10">
             <img 
               src="https://images.unsplash.com/photo-1540420773420-3366772f4999?w=1600&auto=format&fit=crop&q=80" 
               alt="Fresh Mandi Vegetables" 
-              class="w-full h-full object-cover object-center animate-kenburns brightness-[0.45]"
+              class="w-full h-full object-cover object-center animate-kenburns brightness-[0.55] sm:brightness-[0.45]"
             >
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-transparent flex items-center p-6 sm:p-12">
-              <div class="max-w-xl text-white space-y-3.5">
-                <div class="inline-flex items-center gap-2 bg-brand-green/30 border border-brand-green/60 text-green-300 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/80 to-brand-dark/40 sm:bg-gradient-to-r sm:from-brand-dark/95 sm:via-brand-dark/70 sm:to-transparent flex items-center p-5 sm:p-10 md:p-12 pb-14 sm:pb-12">
+              <div class="max-w-xl text-white space-y-2.5 sm:space-y-3.5">
+                <div class="inline-flex items-center gap-1.5 bg-brand-green/30 border border-brand-green/60 text-green-300 text-[10px] sm:text-xs font-black px-2.5 py-1 sm:px-3.5 sm:py-1 rounded-full uppercase tracking-wider">
                   <i data-lucide="sun" class="w-3.5 h-3.5 text-amber-400"></i> Direct Morning Sourcing
                 </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
                   Subha Ki Taza Sabzi Mandi Say Direct
                 </h2>
-                <p class="urdu-text text-xl sm:text-2xl text-emerald-200 font-normal leading-relaxed">
+                <p class="urdu-text text-sm sm:text-xl md:text-2xl text-emerald-200 font-normal leading-relaxed">
                   صبح سویرے سبزی منڈی سے چنی ہوئی تازہ سبزیاں اور پھل، 100% شفاف ڈیجیٹل وزن کے ساتھ
                 </p>
-                <div class="flex items-center gap-3 pt-2">
-                  <button onclick="scrollToCatalog()" class="bg-brand-green hover:bg-brand-hoverGreen text-white font-extrabold text-sm px-6 py-3 rounded-xl transition shadow-lg shadow-green-900/40 flex items-center gap-2 active:scale-95">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 sm:pt-2">
+                  <button onclick="scrollToCatalog()" class="bg-brand-green hover:bg-brand-hoverGreen text-white font-extrabold text-xs sm:text-sm px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl transition shadow-lg shadow-green-900/40 flex items-center gap-2 active:scale-95">
                     <i data-lucide="shopping-basket" class="w-4 h-4"></i> Shop Fresh Vegetables
                   </button>
-                  <span class="text-xs text-gray-300 font-semibold bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/15">
+                  <span class="text-[11px] sm:text-xs text-gray-200 font-semibold bg-white/10 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl border border-white/15">
                     ⚡ 45-Min Express Delivery
                   </span>
                 </div>
@@ -239,24 +252,24 @@
             <img 
               src="https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=1600&auto=format&fit=crop&q=80" 
               alt="Fresh Orchard Fruits" 
-              class="w-full h-full object-cover object-center animate-kenburns brightness-[0.45]"
+              class="w-full h-full object-cover object-center animate-kenburns brightness-[0.55] sm:brightness-[0.45]"
             >
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-transparent flex items-center p-6 sm:p-12">
-              <div class="max-w-xl text-white space-y-3.5">
-                <div class="inline-flex items-center gap-2 bg-amber-500/30 border border-amber-400/60 text-amber-300 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/80 to-brand-dark/40 sm:bg-gradient-to-r sm:from-brand-dark/95 sm:via-brand-dark/70 sm:to-transparent flex items-center p-5 sm:p-10 md:p-12 pb-14 sm:pb-12">
+              <div class="max-w-xl text-white space-y-2.5 sm:space-y-3.5">
+                <div class="inline-flex items-center gap-1.5 bg-amber-500/30 border border-amber-400/60 text-amber-300 text-[10px] sm:text-xs font-black px-2.5 py-1 sm:px-3.5 sm:py-1 rounded-full uppercase tracking-wider">
                   <i data-lucide="sparkles" class="w-3.5 h-3.5 text-amber-300"></i> Swat & Sindh Orchards
                 </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
                   Kalam Swat Apples & Sindh Sweet Bananas
                 </h2>
-                <p class="urdu-text text-xl sm:text-2xl text-amber-200 font-normal leading-relaxed">
+                <p class="urdu-text text-sm sm:text-xl md:text-2xl text-amber-200 font-normal leading-relaxed">
                   باغات سے تازہ ٹوٹے ہوئے شیریں اور رسیلے پھل، ہر ایک دانہ مکمل چیک شدہ
                 </p>
-                <div class="flex items-center gap-3 pt-2">
-                  <button onclick="filterCategory('fruits'); scrollToCatalog();" class="bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-sm px-6 py-3 rounded-xl transition shadow-lg shadow-amber-900/40 flex items-center gap-2 active:scale-95">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 sm:pt-2">
+                  <button onclick="filterCategory('fruits'); scrollToCatalog();" class="bg-amber-500 hover:bg-amber-600 text-white font-extrabold text-xs sm:text-sm px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl transition shadow-lg shadow-amber-900/40 flex items-center gap-2 active:scale-95">
                     <i data-lucide="apple" class="w-4 h-4"></i> Browse Fresh Fruits
                   </button>
-                  <span class="text-xs text-gray-300 font-semibold bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/15">
+                  <span class="text-[11px] sm:text-xs text-gray-200 font-semibold bg-white/10 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl border border-white/15">
                     🍎 100% Naturally Ripened
                   </span>
                 </div>
@@ -269,24 +282,24 @@
             <img 
               src="https://images.unsplash.com/photo-1506484381205-f7945653044d?w=1600&auto=format&fit=crop&q=80" 
               alt="Digital Weighing Scale" 
-              class="w-full h-full object-cover object-center animate-kenburns brightness-[0.40]"
+              class="w-full h-full object-cover object-center animate-kenburns brightness-[0.50] sm:brightness-[0.40]"
             >
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-transparent flex items-center p-6 sm:p-12">
-              <div class="max-w-xl text-white space-y-3.5">
-                <div class="inline-flex items-center gap-2 bg-blue-500/30 border border-blue-400/60 text-blue-300 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/80 to-brand-dark/40 sm:bg-gradient-to-r sm:from-brand-dark/95 sm:via-brand-dark/70 sm:to-transparent flex items-center p-5 sm:p-10 md:p-12 pb-14 sm:pb-12">
+              <div class="max-w-xl text-white space-y-2.5 sm:space-y-3.5">
+                <div class="inline-flex items-center gap-1.5 bg-blue-500/30 border border-blue-400/60 text-blue-300 text-[10px] sm:text-xs font-black px-2.5 py-1 sm:px-3.5 sm:py-1 rounded-full uppercase tracking-wider">
                   <i data-lucide="scale" class="w-3.5 h-3.5 text-blue-300"></i> The Engineer Promise
                 </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
                   Zero Guesswork: 100% Exact Gram Digital Weight
                 </h2>
-                <p class="urdu-text text-xl sm:text-2xl text-blue-200 font-normal leading-relaxed">
+                <p class="urdu-text text-sm sm:text-xl md:text-2xl text-blue-200 font-normal leading-relaxed">
                   گھر کی دہلیز پر ڈیجیٹل اسکیل سے تول کر شفاف بل، ناپ تول میں نہ کوئی دھوکہ نہ کمی
                 </p>
-                <div class="flex items-center gap-3 pt-2">
-                  <button onclick="switchView('admin'); switchAdminTab('scale');" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-sm px-6 py-3 rounded-xl transition shadow-lg shadow-blue-900/40 flex items-center gap-2 active:scale-95">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 sm:pt-2">
+                  <button onclick="switchView('admin'); switchAdminTab('scale');" class="bg-blue-600 hover:bg-blue-700 text-white font-extrabold text-xs sm:text-sm px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl transition shadow-lg shadow-blue-900/40 flex items-center gap-2 active:scale-95">
                     <i data-lucide="cpu" class="w-4 h-4"></i> See Digital Scale In Action
                   </button>
-                  <span class="text-xs text-gray-300 font-semibold bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/15">
+                  <span class="text-[11px] sm:text-xs text-gray-200 font-semibold bg-white/10 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl border border-white/15">
                     ⚖️ Tare-Calibrated Packaging
                   </span>
                 </div>
@@ -299,24 +312,24 @@
             <img 
               src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1600&auto=format&fit=crop&q=80" 
               alt="Grocery Bundles" 
-              class="w-full h-full object-cover object-center animate-kenburns brightness-[0.45]"
+              class="w-full h-full object-cover object-center animate-kenburns brightness-[0.55] sm:brightness-[0.45]"
             >
-            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark/95 via-brand-dark/70 to-transparent flex items-center p-6 sm:p-12">
-              <div class="max-w-xl text-white space-y-3.5">
-                <div class="inline-flex items-center gap-2 bg-emerald-500/30 border border-emerald-400/60 text-emerald-300 text-xs font-black px-3.5 py-1 rounded-full uppercase tracking-wider">
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/95 via-brand-dark/80 to-brand-dark/40 sm:bg-gradient-to-r sm:from-brand-dark/95 sm:via-brand-dark/70 sm:to-transparent flex items-center p-5 sm:p-10 md:p-12 pb-14 sm:pb-12">
+              <div class="max-w-xl text-white space-y-2.5 sm:space-y-3.5">
+                <div class="inline-flex items-center gap-1.5 bg-emerald-500/30 border border-emerald-400/60 text-emerald-300 text-[10px] sm:text-xs font-black px-2.5 py-1 sm:px-3.5 sm:py-1 rounded-full uppercase tracking-wider">
                   <i data-lucide="package" class="w-3.5 h-3.5 text-emerald-300"></i> Kitchen Bulk Saver (15% OFF)
                 </div>
-                <h2 class="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                <h2 class="text-2xl sm:text-4xl md:text-5xl font-black tracking-tight leading-tight">
                   Complete Weekly Kitchen Sabzi Basket
                 </h2>
-                <p class="urdu-text text-xl sm:text-2xl text-emerald-200 font-normal leading-relaxed">
+                <p class="urdu-text text-sm sm:text-xl md:text-2xl text-emerald-200 font-normal leading-relaxed">
                   پورے ہفتے کا راشن: 4 کلو آلو، 3 کلو پیاز، 2 کلو ٹماٹر، لہسن ادرک اور مفت ہرا مصالحہ
                 </p>
-                <div class="flex items-center gap-3 pt-2">
-                  <button onclick="filterCategory('bundles'); scrollToCatalog();" class="bg-brand-green hover:bg-brand-hoverGreen text-white font-extrabold text-sm px-6 py-3 rounded-xl transition shadow-lg shadow-green-900/40 flex items-center gap-2 active:scale-95">
+                <div class="flex flex-wrap items-center gap-2 sm:gap-3 pt-1 sm:pt-2">
+                  <button onclick="filterCategory('bundles'); scrollToCatalog();" class="bg-brand-green hover:bg-brand-hoverGreen text-white font-extrabold text-xs sm:text-sm px-4 py-2.5 sm:px-6 sm:py-3 rounded-xl transition shadow-lg shadow-green-900/40 flex items-center gap-2 active:scale-95">
                     <i data-lucide="sparkles" class="w-4 h-4"></i> View Super Saver Bundles
                   </button>
-                  <span class="text-xs text-gray-300 font-semibold bg-white/10 backdrop-blur-md px-3.5 py-2.5 rounded-xl border border-white/15">
+                  <span class="text-[11px] sm:text-xs text-gray-200 font-semibold bg-white/10 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl border border-white/15">
                     💰 Save Rs. 350 Every Week
                   </span>
                 </div>
@@ -327,19 +340,19 @@
         </div>
 
         <!-- Slider Navigation Arrows -->
-        <button onclick="prevSlide()" class="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md text-white flex items-center justify-center transition active:scale-90 shadow-lg">
-          <i data-lucide="chevron-left" class="w-6 h-6"></i>
+        <button onclick="prevSlide()" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/40 sm:bg-white/20 hover:bg-white/40 backdrop-blur-md text-white flex items-center justify-center transition active:scale-90 shadow-lg" aria-label="Previous Slide">
+          <i data-lucide="chevron-left" class="w-4 h-4 sm:w-6 sm:h-6"></i>
         </button>
-        <button onclick="nextSlide()" class="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/20 hover:bg-white/40 backdrop-blur-md text-white flex items-center justify-center transition active:scale-90 shadow-lg">
-          <i data-lucide="chevron-right" class="w-6 h-6"></i>
+        <button onclick="nextSlide()" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 z-20 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/40 sm:bg-white/20 hover:bg-white/40 backdrop-blur-md text-white flex items-center justify-center transition active:scale-90 shadow-lg" aria-label="Next Slide">
+          <i data-lucide="chevron-right" class="w-4 h-4 sm:w-6 sm:h-6"></i>
         </button>
 
         <!-- Slide Indicators (Dots) -->
-        <div class="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 bg-black/30 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/15">
-          <button onclick="goToSlide(0)" class="slide-dot w-2.5 h-2.5 rounded-full bg-brand-green transition-all"></button>
-          <button onclick="goToSlide(1)" class="slide-dot w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all"></button>
-          <button onclick="goToSlide(2)" class="slide-dot w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all"></button>
-          <button onclick="goToSlide(3)" class="slide-dot w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all"></button>
+        <div class="absolute bottom-3 sm:bottom-4 left-1/2 -translate-x-1/2 z-20 flex items-center gap-1.5 sm:gap-2 bg-black/40 backdrop-blur-md px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-full border border-white/15">
+          <button onclick="goToSlide(0)" class="slide-dot w-2.5 h-2.5 rounded-full bg-brand-green transition-all" aria-label="Slide 1"></button>
+          <button onclick="goToSlide(1)" class="slide-dot w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all" aria-label="Slide 2"></button>
+          <button onclick="goToSlide(2)" class="slide-dot w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all" aria-label="Slide 3"></button>
+          <button onclick="goToSlide(3)" class="slide-dot w-2.5 h-2.5 rounded-full bg-white/50 hover:bg-white transition-all" aria-label="Slide 4"></button>
         </div>
 
       </section>
@@ -435,11 +448,11 @@
       </section>
 
       <!-- Product Count & Live Calibration Indicator -->
-      <div class="flex items-center justify-between text-xs text-gray-500 font-medium">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-xs text-gray-500 font-medium">
         <div>
           Showing <span id="displayedCount" class="font-bold text-gray-800">0</span> items calibrated with morning wholesale mandi rates.
         </div>
-        <div class="flex items-center gap-1.5 text-brand-green font-bold">
+        <div class="flex items-center gap-1.5 text-brand-green font-bold text-[11px] sm:text-xs">
           <i data-lucide="badge-check" class="w-4 h-4"></i> Certified Digital Scale Tare Active
         </div>
       </div>
@@ -1945,7 +1958,7 @@
   </div>
 
   <!-- ==================== RECENT ORDER SOCIAL PROOF TOAST POPUP ==================== -->
-  <div id="socialProofToast" class="fixed bottom-6 left-6 z-40 bg-white/95 backdrop-blur-md border border-gray-200/90 rounded-2xl p-3.5 shadow-xl max-w-sm hidden animate-toast flex items-center gap-3">
+  <div id="socialProofToast" class="fixed bottom-6 left-4 right-4 sm:right-auto sm:left-6 z-40 bg-white/95 backdrop-blur-md border border-gray-200/90 rounded-2xl p-3 sm:p-3.5 shadow-xl max-w-sm hidden animate-toast flex items-center gap-3">
     <div class="w-10 h-10 rounded-full bg-emerald-100 text-brand-green flex items-center justify-center flex-shrink-0">
       <i data-lucide="shopping-bag" class="w-5 h-5"></i>
     </div>
@@ -1967,7 +1980,7 @@
     target="_blank" 
     rel="noopener noreferrer" 
     id="floatingWhatsAppBtn"
-    class="fixed bottom-6 right-6 z-40 bg-[#25d366] hover:bg-[#20ba5c] text-white p-3.5 sm:px-4 sm:py-3 rounded-full shadow-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-105 active:scale-95 group border-2 border-white cursor-pointer"
+    class="fixed bottom-6 right-4 sm:right-6 z-40 bg-[#25d366] hover:bg-[#20ba5c] text-white p-3 sm:px-4 sm:py-3 rounded-full shadow-2xl flex items-center gap-2.5 transition-all duration-300 hover:scale-105 active:scale-95 group border-2 border-white cursor-pointer"
     title="Chat with Engineer Sabzi Valy on WhatsApp (0303 9691236)"
   >
     <div class="relative flex items-center justify-center">
@@ -2141,6 +2154,38 @@
     function resetSlideTimer() {
       clearInterval(slideTimer);
       startSlideTimer();
+    }
+
+    // Touch Swipe Gesture for Mobile Banner
+    function initHeroSwipe() {
+      const slider = document.getElementById('heroSlider');
+      if (!slider) return;
+      let startX = 0;
+      let startY = 0;
+      let isSwiping = false;
+
+      slider.addEventListener('touchstart', (e) => {
+        if (!e.touches || e.touches.length === 0) return;
+        startX = e.touches[0].clientX;
+        startY = e.touches[0].clientY;
+        isSwiping = true;
+      }, { passive: true });
+
+      slider.addEventListener('touchend', (e) => {
+        if (!isSwiping || !e.changedTouches || e.changedTouches.length === 0) return;
+        const diffX = e.changedTouches[0].clientX - startX;
+        const diffY = e.changedTouches[0].clientY - startY;
+        isSwiping = false;
+
+        // Only trigger slide change if horizontal swipe exceeds vertical swipe and threshold > 35px
+        if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > 35) {
+          if (diffX < 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+        }
+      }, { passive: true });
     }
 
     // ==================== TICKING COUNTDOWN TIMER ====================
@@ -2707,14 +2752,14 @@
         }
         storeDiv.classList.add('hidden');
         adminDiv.classList.remove('hidden');
-        label.innerText = "🛒 Customer Storefront";
+        label.innerHTML = '<span class="hidden sm:inline">🛒 Customer Storefront</span><span class="sm:hidden">Store</span>';
         checkAdminAuthStatus();
         loadAdminOrders();
         loadWastageLogs();
       } else {
         adminDiv.classList.add('hidden');
         storeDiv.classList.remove('hidden');
-        label.innerText = "Admin & Mandi Ops";
+        label.innerHTML = '<span class="hidden sm:inline">Admin & Mandi Ops</span><span class="sm:hidden">Admin</span>';
       }
       lucide.createIcons();
     }
@@ -3826,6 +3871,10 @@
           break;
         }
       }
+      const mobileDisplay = document.getElementById('mobileUserAreaDisplay');
+      if (mobileDisplay) {
+        mobileDisplay.innerText = headerSelect.value;
+      }
       localStorage.setItem('esv_user_location', headerSelect.value);
     }
 
@@ -3857,6 +3906,7 @@
       loadProducts();
       updateCartUI();
       startSlideTimer();
+      initHeroSwipe();
       startMandiCountdown();
       checkAdminAuthStatus();
 
